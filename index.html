@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Heart API</title>
+   <link href="{{ url_for('static',filename="css/style.css")}}" rel="stylesheet">
+  <style>
+    .block{
+      background-color: #4CAF;
+      columns: white;
+      text-align: center;
+      font-size: 30px;
+      margin: auto;
+      display: inline;
+      cursor: pointer;
+    }
+    body{
+      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdD54yIeKGOluPMKoxzRk3cJLvOA-89vgGMg&usqp=CAU");
+      background-size: cover;
+    }
+    ::placeholder{
+      font-size: 20px;
+      color: black;
+    }
+    input{
+      font-size: 25px;
+      color:black;
+      
+    }
+  </style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Cardiovascular Disease Prediction</h1>
+  <p><h3>This page can be used to predict whether a person is having Cardiac disease</h3></p>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post"> 
+      
+    	<input type="text" name="male" size="30px"  style="height: 40px;" placeholder="Gender 0-F 1-M" required="required" />
+      <input  type="text" name="age" size="30px" style="height: 40px;" placeholder="Age" required="required" /><br>
+		  <input type="text" name="education" size="30px" style="height: 40px;" placeholder="Education" required="required" />
+		  <input type="text" name="currentSmoker" size="30px" style="height: 40px;" placeholder="CurrentSmoker 0-N 1-Y" required="required" /><br>
+      <input type="text" name="cigsPerDay" size="30px" style="height: 40px;" placeholder="Cigarettes per day" required="required" />
+		  <input type="text" name="prevalentHyp" size="30px" style="height: 40px;" placeholder="Hypertensive 0-N 1-Y" required="required" /><br>
+      <input type="text" name="totChol" size="30px" style="height: 40px;" placeholder="Total cholesterol level" required="required" />
+      <input type="text" name="sysBP" size="30px" style="height: 40px;" placeholder="Systolic blood pressure" required="required" /><br>
+		  <input type="text" name="diaBP" size="30px" style="height: 40px;" placeholder="diastolic blood pressure" required="required" />
+      <input type="text" name="BMI" size="30px" style="height: 40px;" placeholder="Body Mass Index" required="required" /><br>
+      <input type="text" name="heartRate" size="30px" style="height: 40px;" placeholder="Heart Rate" required="required" />
+		  <input type="text" name="glucose" size="30px" style="height: 40px;" placeholder="Glucose level" required="required" /><br>
+
+  
+
+        <button type="submit"  class="block">Predict</button>
+
+    </form> 
+   {{prediction_text}}
+ </div>
+
+
+</body>
+</html>
